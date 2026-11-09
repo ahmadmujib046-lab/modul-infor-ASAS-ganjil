@@ -1,0 +1,1267 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modul Interaktif Informatika Kelas VII - Persiapan AAS</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts Inter & Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            500: '#22c55e',
+                            600: '#16a34a',
+                            700: '#15803d',
+                            900: '#14532d',
+                        },
+                        tech: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Poppins', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom Styles & Visual Touches */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .dark .glass-panel {
+            background: rgba(15, 23, 42, 0.85);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.05);
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: rgba(156, 163, 175, 0.5);
+            border-radius: 9999px;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100 font-sans antialiased min-h-screen flex flex-col transition-colors duration-300">
+
+    <!-- TOP NAVBAR -->
+    <header class="sticky top-0 z-50 glass-panel border-b border-slate-200 dark:border-slate-800 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <!-- Brand / Title -->
+            <div class="flex items-center space-x-3">
+                <button id="toggleSidebar" class="p-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 lg:hidden focus:outline-none">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
+                <div class="bg-gradient-to-r from-tech-600 to-brand-600 text-white p-2.5 rounded-xl shadow-md">
+                    <i class="fa-solid fa-laptop-code text-xl"></i>
+                </div>
+                <div>
+                    <h1 class="font-heading text-lg sm:text-xl font-bold bg-gradient-to-r from-tech-600 to-brand-600 bg-clip-text text-transparent">
+                        Ruang Belajar Informatika
+                    </h1>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 hidden sm:block">
+                        Persiapan Asesmen Sumatif Akhir Semester (AAS) • Kelas VII SMPN 2 Bangunrejo
+                    </p>
+                </div>
+            </div>
+
+            <!-- Actions -->
+            <div class="flex items-center space-x-3">
+                <button id="searchBtn" class="p-2.5 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl transition-all" title="Cari Materi">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+                <button id="darkModeToggle" class="p-2.5 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl transition-all" title="Ubah Mode Layar">
+                    <i class="fa-solid fa-moon dark:hidden text-lg"></i>
+                    <i class="fa-solid fa-sun hidden dark:block text-amber-400 text-lg"></i>
+                </button>
+                <a href="#latihan" class="hidden sm:flex items-center space-x-2 bg-brand-600 hover:bg-brand-700 text-white px-4 py-2 rounded-xl text-sm font-semibold shadow-md transition-all transform hover:-translate-y-0.5">
+                    <i class="fa-solid fa-pen-to-square"></i>
+                    <span>Kuis Interaktif</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTAINER -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex-1 flex gap-6">
+
+        <!-- SIDEBAR NAVIGATION -->
+        <aside id="sidebar" class="fixed inset-y-0 left-0 z-40 w-72 bg-white dark:bg-slate-800 border-r border-slate-200 dark:border-slate-700 transform -translate-x-full lg:translate-x-0 lg:static lg:z-auto transition-transform duration-300 ease-in-out flex flex-col rounded-2xl shadow-lg lg:shadow-none my-0 lg:my-0 h-full lg:h-auto overflow-hidden">
+            <div class="p-4 border-b border-slate-200 dark:border-slate-700 flex justify-between items-center lg:hidden">
+                <span class="font-heading font-bold text-slate-700 dark:text-slate-200">Daftar Isi Bab</span>
+                <button id="closeSidebar" class="p-2 text-slate-500 hover:text-slate-700 dark:text-slate-400">
+                    <i class="fa-solid fa-xmark text-xl"></i>
+                </button>
+            </div>
+            
+            <div class="p-4 border-b border-slate-100 dark:border-slate-700/50 bg-slate-50/50 dark:bg-slate-800/50">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-full bg-tech-100 dark:bg-tech-900/50 text-tech-600 dark:text-tech-400 flex items-center justify-center font-bold">
+                        VII
+                    </div>
+                    <div>
+                        <div class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Modul Kurikulum</div>
+                        <div class="text-sm font-bold text-slate-700 dark:text-slate-200">TA 2026 / 2027</div>
+                    </div>
+                </div>
+            </div>
+
+            <nav class="flex-1 overflow-y-auto custom-scrollbar p-3 space-y-1">
+                <a href="#pengantar" class="nav-item flex items-center px-3 py-2.5 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700/50 transition-colors active">
+                    <i class="fa-solid fa-compass w-6 text-tech-500"></i>
+                    <span>Petunjuk & Peta Materi</span>
+                </a>
+                
+                <div class="pt-2 pb-1 px-3 text-[11px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider">Modul Pembelajaran</div>
+
+                <a href="#bab1" class="nav-item flex items-center px-3 py-2.5 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700/50 transition-colors">
+                    <i class="fa-solid fa-sitemap w-6 text-emerald-500"></i>
+                    <span>Bab 1: Struktur Data</span>
+                </a>
+                <a href="#bab2" class="nav-item flex items-center px-3 py-2.5 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700/50 transition-colors">
+                    <i class="fa-solid fa-table w-6 text-green-500"></i>
+                    <span>Bab 2: Lembar Kerja Excel</span>
+                </a>
+                <a href="#bab3" class="nav-item flex items-center px-3 py-2.5 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700/50 transition-colors">
+                    <i class="fa-solid fa-brain w-6 text-purple-500"></i>
+                    <span>Bab 3: Berpikir Komputasional</span>
+                </a>
+                <a href="#bab4" class="nav-item flex items-center px-3 py-2.5 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700/50 transition-colors">
+                    <i class="fa-solid fa-globe w-6 text-blue-500"></i>
+                    <span>Bab 4: Mesin Pencari Internet</span>
+                </a>
+                <a href="#bab5" class="nav-item flex items-center px-3 py-2.5 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700/50 transition-colors">
+                    <i class="fa-solid fa-shield-halved w-6 text-rose-500"></i>
+                    <span>Bab 5: Kredibilitas & Keamanan</span>
+                </a>
+                <a href="#bab6" class="nav-item flex items-center px-3 py-2.5 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700/50 transition-colors">
+                    <i class="fa-solid fa-desktop w-6 text-amber-500"></i>
+                    <span>Bab 6: Sistem Komputer</span>
+                </a>
+                <a href="#bab7" class="nav-item flex items-center px-3 py-2.5 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700/50 transition-colors">
+                    <i class="fa-solid fa-users w-6 text-teal-500"></i>
+                    <span>Bab 7: Ruang Publik</span>
+                </a>
+                <a href="#bab8" class="nav-item flex items-center px-3 py-2.5 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700/50 transition-colors">
+                    <i class="fa-solid fa-network-wired w-6 text-indigo-500"></i>
+                    <span>Bab 8: TIK & Jaringan LAN</span>
+                </a>
+
+                <div class="pt-2 pb-1 px-3 text-[11px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider">Evaluasi & Ringkasan</div>
+
+                <a href="#rangkuman" class="nav-item flex items-center px-3 py-2.5 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700/50 transition-colors">
+                    <i class="fa-solid fa-bolt w-6 text-yellow-500"></i>
+                    <span>Rangkuman Cepat</span>
+                </a>
+                <a href="#kalkulator" class="nav-item flex items-center px-3 py-2.5 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700/50 transition-colors">
+                    <i class="fa-solid fa-calculator w-6 text-indigo-400"></i>
+                    <span>Kalkulator Simulasi</span>
+                </a>
+                <a href="#latihan" class="nav-item flex items-center px-3 py-2.5 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700/50 transition-colors">
+                    <i class="fa-solid fa-graduation-cap w-6 text-brand-500"></i>
+                    <span>Latihan Mandiri Interaktif</span>
+                </a>
+            </nav>
+
+            <div class="p-4 border-t border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/80">
+                <div class="flex items-center space-x-3">
+                    <div class="w-8 h-8 rounded-lg bg-brand-500/10 text-brand-600 flex items-center justify-center">
+                        <i class="fa-solid fa-chalkboard-user"></i>
+                    </div>
+                    <div class="text-xs">
+                        <div class="font-semibold text-slate-700 dark:text-slate-300">Guru Informatika</div>
+                        <div class="text-slate-400">Siap mendampingi belajar!</div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- MAIN CONTENT AREA -->
+        <main class="flex-1 space-y-8 overflow-x-hidden">
+
+            <!-- SEARCH MODAL (HIDDEN BY DEFAULT) -->
+            <div id="searchModal" class="fixed inset-0 z-50 bg-slate-900/50 backdrop-blur-sm hidden flex items-start justify-center pt-20 px-4">
+                <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-2xl max-w-2xl w-full p-4 space-y-4 border border-slate-200 dark:border-slate-700">
+                    <div class="flex items-center border-b border-slate-200 dark:border-slate-700 pb-3">
+                        <i class="fa-solid fa-magnifying-glass text-slate-400 text-lg mr-3"></i>
+                        <input type="text" id="searchInput" placeholder="Cari topik (misal: FIFO, Excel, Hoaks, CPU)..." class="w-full bg-transparent focus:outline-none text-slate-800 dark:text-slate-100 placeholder-slate-400">
+                        <button id="closeSearch" class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">
+                            <i class="fa-solid fa-xmark text-xl"></i>
+                        </button>
+                    </div>
+                    <div id="searchResults" class="max-h-96 overflow-y-auto space-y-2 text-sm">
+                        <p class="text-slate-400 text-center py-6">Ketik kata kunci untuk mulai mencari materi...</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- HERO / WELCOME BANNER -->
+            <section id="pengantar" class="relative overflow-hidden rounded-3xl bg-gradient-to-r from-tech-900 via-tech-800 to-brand-900 text-white p-6 sm:p-10 shadow-xl">
+                <div class="absolute -right-10 -bottom-10 opacity-10 text-9xl">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                </div>
+                <div class="relative z-10 max-w-3xl space-y-4">
+                    <div class="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-md px-3 py-1 rounded-full text-xs font-semibold text-brand-100">
+                        <span class="w-2 h-2 rounded-full bg-brand-500 animate-pulse"></span>
+                        <span>Modul Ringkas Persiapan AAS</span>
+                    </div>
+                    <h2 class="font-heading text-2xl sm:text-4xl font-extrabold leading-tight">
+                        Halo Siswa Hebat! Selamat Datang di Modul Informatika Kelas VII
+                    </h2>
+                    <p class="text-slate-200 text-sm sm:text-base leading-relaxed">
+                        Modul interaktif ini dirancang khusus untuk memandu kamu memahami konsep-konsep kunci Informatika secara logis, kontekstual, dan menyenangkan. Pelajari setiap bab, pahami ilustrasi visualnya, lalu uji pemahamanmu pada kuis interaktif di akhir materi.
+                    </p>
+                    
+                    <!-- PETUNJUK PENGGUNAAN -->
+                    <div class="pt-4 grid grid-cols-1 sm:grid-cols-3 gap-3">
+                        <div class="bg-white/10 backdrop-blur-sm p-3 rounded-2xl border border-white/10 flex items-start space-x-3">
+                            <div class="p-2 bg-brand-500/20 text-brand-300 rounded-lg">
+                                <i class="fa-solid fa-book-open"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-xs text-white">1. Pelajari Urut</h4>
+                                <p class="text-[11px] text-slate-300">Baca definisi & amati visualisasi konsep.</p>
+                            </div>
+                        </div>
+                        <div class="bg-white/10 backdrop-blur-sm p-3 rounded-2xl border border-white/10 flex items-start space-x-3">
+                            <div class="p-2 bg-tech-500/20 text-tech-300 rounded-lg">
+                                <i class="fa-solid fa-calculator"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-xs text-white">2. Coba Numerasi</h4>
+                                <p class="text-[11px] text-slate-300">Gunakan simulator hitung yang tersedia.</p>
+                            </div>
+                        </div>
+                        <div class="bg-white/10 backdrop-blur-sm p-3 rounded-2xl border border-white/10 flex items-start space-x-3">
+                            <div class="p-2 bg-amber-500/20 text-amber-300 rounded-lg">
+                                <i class="fa-solid fa-check-double"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-xs text-white">3. Ingat Ujian</h4>
+                                <p class="text-[11px] text-slate-300">Fokus pada rangkuman poin-poin penting.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- PETA MATERI TABLE -->
+            <section class="bg-white dark:bg-slate-800 rounded-2xl p-6 border border-slate-200 dark:border-slate-700 shadow-sm">
+                <h3 class="font-heading text-lg font-bold text-slate-800 dark:text-slate-100 mb-4 flex items-center gap-2">
+                    <i class="fa-solid fa-map text-tech-500"></i>
+                    <span>Peta Materi & Cakupan Bahasan</span>
+                </h3>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-sm text-left text-slate-600 dark:text-slate-300">
+                        <thead class="text-xs uppercase bg-slate-100 dark:bg-slate-700/50 text-slate-700 dark:text-slate-300 font-bold">
+                            <tr>
+                                <th class="px-4 py-3 rounded-l-xl">No / Topik</th>
+                                <th class="px-4 py-3 rounded-r-xl">Cakupan Istilah & Konsep Utama</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100 dark:divide-slate-700">
+                            <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/30">
+                                <td class="px-4 py-3 font-semibold text-slate-800 dark:text-slate-200">1. Struktur Data</td>
+                                <td class="px-4 py-3">List, Queue, Tree, FIFO, Root, Parent, Child, Leaf</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/30">
+                                <td class="px-4 py-3 font-semibold text-slate-800 dark:text-slate-200">2. Lembar Kerja</td>
+                                <td class="px-4 py-3">Microsoft Excel, Baris, Kolom, Cell, SUM, AVERAGE, COUNT, AND</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/30">
+                                <td class="px-4 py-3 font-semibold text-slate-800 dark:text-slate-200">3. Berpikir Komputasional</td>
+                                <td class="px-4 py-3">Dekomposisi, Pengenalan Pola, Abstraksi, Algoritma, Efektif & Efisien</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/30">
+                                <td class="px-4 py-3 font-semibold text-slate-800 dark:text-slate-200">4. Mesin Pencari Internet</td>
+                                <td class="px-4 py-3">Browser, Search Engine, URL, Address Bar, Bookmark</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/30">
+                                <td class="px-4 py-3 font-semibold text-slate-800 dark:text-slate-200">5. Kredibilitas Data</td>
+                                <td class="px-4 py-3">Hoaks, Verifikasi Informasi, Sumber Resmi, Keamanan Digital, Data vs Informasi</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/30">
+                                <td class="px-4 py-3 font-semibold text-slate-800 dark:text-slate-200">6. Sistem Komputer</td>
+                                <td class="px-4 py-3">Hardware, Software, Brainware, Input, Proses, Output, RAM, ALU, Storage</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/30">
+                                <td class="px-4 py-3 font-semibold text-slate-800 dark:text-slate-200">7. Ruang Publik</td>
+                                <td class="px-4 py-3">Ruang Publik Nyata & Virtual, Etika Digital, Numerasi Sederhana</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/30">
+                                <td class="px-4 py-3 font-semibold text-slate-800 dark:text-slate-200">8. TIK & Jaringan</td>
+                                <td class="px-4 py-3">Folder, Subfolder, Jaringan Komputer, Local Area Network (LAN)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- BAB 1: STRUKTUR DATA -->
+            <section id="bab1" class="bg-white dark:bg-slate-800 rounded-3xl p-6 sm:p-8 border border-slate-200 dark:border-slate-700 shadow-sm scroll-mt-20">
+                <div class="flex items-center space-x-3 mb-6">
+                    <div class="w-12 h-12 rounded-2xl bg-emerald-100 dark:bg-emerald-900/50 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-xl font-bold">
+                        <i class="fa-solid fa-sitemap"></i>
+                    </div>
+                    <div>
+                        <span class="text-xs font-bold text-emerald-600 uppercase tracking-wider">Bab 1</span>
+                        <h2 class="font-heading text-2xl font-bold text-slate-800 dark:text-slate-100">Struktur Data</h2>
+                    </div>
+                </div>
+
+                <p class="text-slate-600 dark:text-slate-300 leading-relaxed mb-6">
+                    <strong>Struktur data</strong> adalah cara menyusun dan mengatur sekumpulan data agar mudah disimpan, dicari, dan digunakan. Contoh sehari-hari: daftar belanjaan, antrean di kantin, dan silsilah keluarga.
+                </p>
+
+                <!-- VISUAL INTERAKTIF: 3 STRUKTUR DATA -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+                    <!-- LIST CARD -->
+                    <div class="border border-slate-200 dark:border-slate-700 rounded-2xl p-5 bg-slate-50 dark:bg-slate-800/50 hover:shadow-md transition-all">
+                        <div class="flex items-center justify-between mb-3">
+                            <h4 class="font-bold text-emerald-600 dark:text-emerald-400">A. List (Daftar)</h4>
+                            <span class="px-2 py-1 bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300 text-xs rounded-md font-semibold">Sekuensial</span>
+                        </div>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">
+                            Kumpulan data yang disusun berurutan. Contoh: daftar siswa, belanjaan, nilai.
+                        </p>
+                        <!-- Visual representation -->
+                        <div class="bg-white dark:bg-slate-900 p-3 rounded-xl border border-slate-200 dark:border-slate-800 flex gap-2 overflow-x-auto custom-scrollbar">
+                            <div class="bg-emerald-50 dark:bg-emerald-950 border border-emerald-200 dark:border-emerald-800 p-2 rounded-lg text-center flex-1 min-w-[60px]">
+                                <span class="text-[10px] text-slate-400 block">Index 0</span>
+                                <span class="text-xs font-bold text-slate-700 dark:text-slate-200">Buku</span>
+                            </div>
+                            <div class="bg-emerald-50 dark:bg-emerald-950 border border-emerald-200 dark:border-emerald-800 p-2 rounded-lg text-center flex-1 min-w-[60px]">
+                                <span class="text-[10px] text-slate-400 block">Index 1</span>
+                                <span class="text-xs font-bold text-slate-700 dark:text-slate-200">Pensil</span>
+                            </div>
+                            <div class="bg-emerald-50 dark:bg-emerald-950 border border-emerald-200 dark:border-emerald-800 p-2 rounded-lg text-center flex-1 min-w-[60px]">
+                                <span class="text-[10px] text-slate-400 block">Index 2</span>
+                                <span class="text-xs font-bold text-slate-700 dark:text-slate-200">Penggaris</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- QUEUE CARD -->
+                    <div class="border border-slate-200 dark:border-slate-700 rounded-2xl p-5 bg-slate-50 dark:bg-slate-800/50 hover:shadow-md transition-all">
+                        <div class="flex items-center justify-between mb-3">
+                            <h4 class="font-bold text-blue-600 dark:text-blue-400">B. Queue (Antrean)</h4>
+                            <span class="px-2 py-1 bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300 text-xs rounded-md font-semibold">Prinsip FIFO</span>
+                        </div>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">
+                            <strong>First In, First Out (FIFO)</strong>: Yang pertama masuk, pertama dilayani. Contoh: Antrean kasir/bank.
+                        </p>
+                        <!-- Visual representation -->
+                        <div class="bg-white dark:bg-slate-900 p-3 rounded-xl border border-slate-200 dark:border-slate-800">
+                            <div class="flex items-center justify-between text-[10px] text-slate-400 mb-1">
+                                <span>MASUK (Rear)</span>
+                                <span>KELUAR (Front)</span>
+                            </div>
+                            <div class="flex items-center gap-1">
+                                <div class="bg-blue-500 text-white text-xs px-2 py-1 rounded text-center font-bold">Citra</div>
+                                <i class="fa-solid fa-arrow-right text-xs text-slate-400"></i>
+                                <div class="bg-blue-500 text-white text-xs px-2 py-1 rounded text-center font-bold">Budi</div>
+                                <i class="fa-solid fa-arrow-right text-xs text-slate-400"></i>
+                                <div class="bg-blue-600 text-white text-xs px-2 py-1 rounded text-center font-bold animate-pulse">Andi</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- TREE CARD -->
+                    <div class="border border-slate-200 dark:border-slate-700 rounded-2xl p-5 bg-slate-50 dark:bg-slate-800/50 hover:shadow-md transition-all">
+                        <div class="flex items-center justify-between mb-3">
+                            <h4 class="font-bold text-amber-600 dark:text-amber-400">C. Tree (Pohon)</h4>
+                            <span class="px-2 py-1 bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-300 text-xs rounded-md font-semibold">Hierarki</span>
+                        </div>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">
+                            Susunan bertingkat bercabang. Contoh: Silsilah keluarga, organisasi sekolah, struktur folder.
+                        </p>
+                        <!-- Visual Tree -->
+                        <div class="bg-white dark:bg-slate-900 p-2 rounded-xl border border-slate-200 dark:border-slate-800 text-center text-xs space-y-1">
+                            <div class="inline-block bg-amber-500 text-white px-3 py-0.5 rounded-md font-bold">Root (A)</div>
+                            <div class="text-slate-400 text-[10px]">┌───────┴───────┐</div>
+                            <div class="flex justify-around">
+                                <span class="bg-amber-200 dark:bg-amber-800 text-amber-900 dark:text-amber-100 px-2 py-0.5 rounded">Parent (B)</span>
+                                <span class="bg-amber-200 dark:bg-amber-800 text-amber-900 dark:text-amber-100 px-2 py-0.5 rounded">Child (C)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TABEL ISTILAH TREE -->
+                <div class="bg-slate-50 dark:bg-slate-900/50 rounded-2xl p-4 border border-slate-200 dark:border-slate-700 mb-6">
+                    <h4 class="font-bold text-sm text-slate-700 dark:text-slate-200 mb-3">Istilah Kunci pada Struktur Tree:</h4>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs">
+                        <div class="p-2.5 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700">
+                            <span class="font-bold text-amber-600 block mb-1">Root</span>
+                            <span>Simpul utama paling atas.</span>
+                        </div>
+                        <div class="p-2.5 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700">
+                            <span class="font-bold text-amber-600 block mb-1">Parent</span>
+                            <span>Simpul induk yang memiliki anak.</span>
+                        </div>
+                        <div class="p-2.5 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700">
+                            <span class="font-bold text-amber-600 block mb-1">Child</span>
+                            <span>Simpul anak yang berada di bawah parent.</span>
+                        </div>
+                        <div class="p-2.5 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700">
+                            <span class="font-bold text-amber-600 block mb-1">Leaf</span>
+                            <span>Simpul paling ujung (tidak punya anak).</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- INGAT UNTUK UJIAN BANNER -->
+                <div class="bg-amber-50 dark:bg-amber-950/40 border-l-4 border-amber-500 p-4 rounded-r-2xl">
+                    <div class="flex items-center space-x-2 text-amber-800 dark:text-amber-300 font-bold text-sm mb-1">
+                        <i class="fa-solid fa-lightbulb"></i>
+                        <span>INGAT UNTUK UJIAN:</span>
+                    </div>
+                    <ul class="text-xs text-amber-900 dark:text-amber-200 space-y-1 list-disc list-inside">
+                        <li>Daftar belanja atau daftar nama = <strong>List</strong>.</li>
+                        <li>Antrean pelayanan kasir = <strong>Queue</strong> (berprinsip <strong>FIFO</strong>).</li>
+                        <li>Silsilah keluarga / Organisasi = <strong>Tree</strong>. Simpul paling atas disebut <strong>Root</strong>.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- BAB 2: LEMBAR KERJA EXCEL -->
+            <section id="bab2" class="bg-white dark:bg-slate-800 rounded-3xl p-6 sm:p-8 border border-slate-200 dark:border-slate-700 shadow-sm scroll-mt-20">
+                <div class="flex items-center space-x-3 mb-6">
+                    <div class="w-12 h-12 rounded-2xl bg-green-100 dark:bg-green-900/50 text-green-600 dark:text-green-400 flex items-center justify-center text-xl font-bold">
+                        <i class="fa-solid fa-file-excel"></i>
+                    </div>
+                    <div>
+                        <span class="text-xs font-bold text-green-600 uppercase tracking-wider">Bab 2</span>
+                        <h2 class="font-heading text-2xl font-bold text-slate-800 dark:text-slate-100">Konsep Lembar Kerja (Microsoft Excel)</h2>
+                    </div>
+                </div>
+
+                <p class="text-slate-600 dark:text-slate-300 leading-relaxed mb-6">
+                    <strong>Microsoft Excel</strong> adalah aplikasi pengolah angka untuk memasukkan, mengatur, menghitung, dan menganalisis data (seperti daftar nilai, kehadiran, atau keuangan).
+                </p>
+
+                <!-- GRID KOMPONEN EXCEL -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <div class="space-y-3">
+                        <h4 class="font-bold text-sm text-slate-700 dark:text-slate-200">Anatomi Lembar Kerja:</h4>
+                        <ul class="space-y-2 text-xs">
+                            <li class="p-2.5 bg-slate-50 dark:bg-slate-900/50 rounded-xl border border-slate-200 dark:border-slate-700 flex justify-between">
+                                <span class="font-semibold text-green-600">Row (Baris)</span>
+                                <span>Susunan mendatar (Angka 1, 2, 3...)</span>
+                            </li>
+                            <li class="p-2.5 bg-slate-50 dark:bg-slate-900/50 rounded-xl border border-slate-200 dark:border-slate-700 flex justify-between">
+                                <span class="font-semibold text-green-600">Column (Kolom)</span>
+                                <span>Susunan tegak (Huruf A, B, C...)</span>
+                            </li>
+                            <li class="p-2.5 bg-slate-50 dark:bg-slate-900/50 rounded-xl border border-slate-200 dark:border-slate-700 flex justify-between">
+                                <span class="font-semibold text-green-600">Cell (Sel)</span>
+                                <span>Pertemuan Baris & Kolom (Contoh: A1, B2)</span>
+                            </li>
+                            <li class="p-2.5 bg-slate-50 dark:bg-slate-900/50 rounded-xl border border-slate-200 dark:border-slate-700 flex justify-between">
+                                <span class="font-semibold text-green-600">Workbook & Worksheet</span>
+                                <span>File Excel & Lembar Kerja di dalamnya</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- SIMULASI FORMULA EXCEL INTERAKTIF -->
+                    <div class="bg-slate-900 text-slate-100 p-4 rounded-2xl border border-slate-700 space-y-3">
+                        <div class="flex items-center justify-between border-b border-slate-800 pb-2">
+                            <span class="text-xs font-mono text-green-400">Simulasi Formula Excel</span>
+                            <span class="text-[10px] bg-green-900/50 text-green-300 px-2 py-0.5 rounded">Selalu diawali '='</span>
+                        </div>
+                        
+                        <div class="text-xs font-mono space-y-1 bg-slate-950 p-3 rounded-xl">
+                            <div>A1 = 70 | A2 = 80 | A3 = 90</div>
+                        </div>
+
+                        <div class="space-y-2 text-xs">
+                            <div class="p-2 bg-slate-800 rounded-lg flex justify-between items-center">
+                                <code>=SUM(A1:A3)</code>
+                                <span class="text-green-400 font-bold">240</span>
+                                <span class="text-[10px] text-slate-400">(Menjumlahkan)</span>
+                            </div>
+                            <div class="p-2 bg-slate-800 rounded-lg flex justify-between items-center">
+                                <code>=AVERAGE(A1:A3)</code>
+                                <span class="text-green-400 font-bold">80</span>
+                                <span class="text-[10px] text-slate-400">(Rata-rata)</span>
+                            </div>
+                            <div class="p-2 bg-slate-800 rounded-lg flex justify-between items-center">
+                                <code>=COUNT(A1:A3)</code>
+                                <span class="text-green-400 font-bold">3</span>
+                                <span class="text-[10px] text-slate-400">(Banyak sel berisi angka)</span>
+                            </div>
+                            <div class="p-2 bg-slate-800 rounded-lg flex justify-between items-center">
+                                <code>=AND(A1>=70, B1>=75)</code>
+                                <span class="text-amber-400 font-bold">TRUE/FALSE</span>
+                                <span class="text-[10px] text-slate-400">(Semua syarat harus benar)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- INGAT UNTUK UJIAN -->
+                <div class="bg-green-50 dark:bg-green-950/40 border-l-4 border-green-500 p-4 rounded-r-2xl">
+                    <div class="flex items-center space-x-2 text-green-800 dark:text-green-300 font-bold text-sm mb-1">
+                        <i class="fa-solid fa-lightbulb"></i>
+                        <span>INGAT UNTUK UJIAN:</span>
+                    </div>
+                    <p class="text-xs text-green-900 dark:text-green-200">
+                        Rumus Excel <strong>wajib diawali tanda sama dengan (=)</strong>. Contoh sel <strong>A1</strong> berarti Kolom A dan Baris 1. Fungsi <code>AND</code> bernilai <strong>TRUE</strong> hanya jika seluruh kondisi yang diperiksa benar.
+                    </p>
+                </div>
+            </section>
+
+            <!-- BAB 3: BERPIKIR KOMPUTASIONAL -->
+            <section id="bab3" class="bg-white dark:bg-slate-800 rounded-3xl p-6 sm:p-8 border border-slate-200 dark:border-slate-700 shadow-sm scroll-mt-20">
+                <div class="flex items-center space-x-3 mb-6">
+                    <div class="w-12 h-12 rounded-2xl bg-purple-100 dark:bg-purple-900/50 text-purple-600 dark:text-purple-400 flex items-center justify-center text-xl font-bold">
+                        <i class="fa-solid fa-brain"></i>
+                    </div>
+                    <div>
+                        <span class="text-xs font-bold text-purple-600 uppercase tracking-wider">Bab 3</span>
+                        <h2 class="font-heading text-2xl font-bold text-slate-800 dark:text-slate-100">Berpikir Komputasional (BK)</h2>
+                    </div>
+                </div>
+
+                <p class="text-slate-600 dark:text-slate-300 leading-relaxed mb-6">
+                    <strong>Berpikir Komputasional</strong> adalah cara berpikir logis, sistematis, dan terstruktur untuk memecahkan masalah. Metode ini bisa diterapkan tanpa komputer sekalipun!
+                </p>
+
+                <!-- 4 FONDASI BK -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+                    <div class="p-4 bg-purple-50 dark:bg-purple-950/40 border border-purple-200 dark:border-purple-800 rounded-2xl">
+                        <div class="text-purple-600 font-bold text-base mb-1">1. Dekomposisi</div>
+                        <p class="text-xs text-slate-600 dark:text-slate-300">
+                            Memecah masalah besar menjadi bagian-bagian kecil yang mudah dikelola.
+                        </p>
+                        <span class="inline-block mt-2 text-[10px] bg-purple-200 dark:bg-purple-800 text-purple-800 dark:text-purple-200 px-2 py-0.5 rounded">Ex: Membagi tugas piket</span>
+                    </div>
+
+                    <div class="p-4 bg-indigo-50 dark:bg-indigo-950/40 border border-indigo-200 dark:border-indigo-800 rounded-2xl">
+                        <div class="text-indigo-600 font-bold text-base mb-1">2. Pengenalan Pola</div>
+                        <p class="text-xs text-slate-600 dark:text-slate-300">
+                            Mencari kesamaan atau pola berulang dari masalah sebelumnya.
+                        </p>
+                        <span class="inline-block mt-2 text-[10px] bg-indigo-200 dark:bg-indigo-800 text-indigo-800 dark:text-indigo-200 px-2 py-0.5 rounded">Ex: Jadwal upacara tiap Senin</span>
+                    </div>
+
+                    <div class="p-4 bg-pink-50 dark:bg-pink-950/40 border border-pink-200 dark:border-pink-800 rounded-2xl">
+                        <div class="text-pink-600 font-bold text-base mb-1">3. Abstraksi</div>
+                        <p class="text-xs text-slate-600 dark:text-slate-300">
+                            Fokus pada informasi penting dan mengabaikan detail tak relevan.
+                        </p>
+                        <span class="inline-block mt-2 text-[10px] bg-pink-200 dark:bg-pink-800 text-pink-800 dark:text-pink-200 px-2 py-0.5 rounded">Ex: Melihat peta jalan utama</span>
+                    </div>
+
+                    <div class="p-4 bg-blue-50 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-800 rounded-2xl">
+                        <div class="text-blue-600 font-bold text-base mb-1">4. Algoritma</div>
+                        <p class="text-xs text-slate-600 dark:text-slate-300">
+                            Menyusun langkah-langkah logis secara terurut untuk solusi.
+                        </p>
+                        <span class="inline-block mt-2 text-[10px] bg-blue-200 dark:bg-blue-800 text-blue-800 dark:text-blue-200 px-2 py-0.5 rounded">Ex: Resep masak mi instan</span>
+                    </div>
+                </div>
+
+                <!-- EFEKTIF vs EFISIEN -->
+                <div class="bg-slate-50 dark:bg-slate-900/50 p-4 rounded-2xl border border-slate-200 dark:border-slate-700 mb-6">
+                    <h4 class="font-bold text-sm text-slate-800 dark:text-slate-200 mb-2">Beda Efektif dan Efisien:</h4>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+                        <div class="p-3 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700">
+                            <span class="font-bold text-purple-600 block">Efektif</span>
+                            <span>Tujuan atau hasil berhasil dicapai dengan baik sesuai target.</span>
+                        </div>
+                        <div class="p-3 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700">
+                            <span class="font-bold text-purple-600 block">Efisien</span>
+                            <span>Tujuan dicapai dengan lebih hemat waktu, tenaga, atau biaya.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- INGAT UNTUK UJIAN -->
+                <div class="bg-purple-50 dark:bg-purple-950/40 border-l-4 border-purple-500 p-4 rounded-r-2xl">
+                    <div class="flex items-center space-x-2 text-purple-800 dark:text-purple-300 font-bold text-sm mb-1">
+                        <i class="fa-solid fa-lightbulb"></i>
+                        <span>INGAT UNTUK UJIAN:</span>
+                    </div>
+                    <p class="text-xs text-purple-900 dark:text-purple-200">
+                        Dekomposisi = memecah masalah | Pengenalan Pola = mencari kesamaan | Abstraksi = memilih hal penting | Algoritma = urutan langkah.
+                    </p>
+                </div>
+            </section>
+
+            <!-- BAB 4: MESIN PENCARI INTERNET -->
+            <section id="bab4" class="bg-white dark:bg-slate-800 rounded-3xl p-6 sm:p-8 border border-slate-200 dark:border-slate-700 shadow-sm scroll-mt-20">
+                <div class="flex items-center space-x-3 mb-6">
+                    <div class="w-12 h-12 rounded-2xl bg-blue-100 dark:bg-blue-900/50 text-blue-600 dark:text-blue-400 flex items-center justify-center text-xl font-bold">
+                        <i class="fa-solid fa-globe"></i>
+                    </div>
+                    <div>
+                        <span class="text-xs font-bold text-blue-600 uppercase tracking-wider">Bab 4</span>
+                        <h2 class="font-heading text-2xl font-bold text-slate-800 dark:text-slate-100">Mesin Pencari di Internet</h2>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <div class="space-y-3 text-xs">
+                        <div class="p-3 bg-slate-50 dark:bg-slate-900/50 rounded-xl border border-slate-200 dark:border-slate-700">
+                            <span class="font-bold text-blue-600 text-sm block mb-1">Browser (Peramban)</span>
+                            <p class="text-slate-600 dark:text-slate-300">Aplikasi perangkat lunak untuk membuka & menjelajahi halaman web. Contoh: <strong>Google Chrome, Mozilla Firefox, Microsoft Edge, Safari</strong>.</p>
+                        </div>
+                        <div class="p-3 bg-slate-50 dark:bg-slate-900/50 rounded-xl border border-slate-200 dark:border-slate-700">
+                            <span class="font-bold text-blue-600 text-sm block mb-1">Search Engine (Mesin Pencari)</span>
+                            <p class="text-slate-600 dark:text-slate-300">Layanan situs web untuk mencari informasi berbasis kata kunci. Contoh: <strong>Google Search, Bing, Yahoo, DuckDuckGo</strong>.</p>
+                        </div>
+                    </div>
+
+                    <div class="space-y-3 text-xs">
+                        <div class="p-3 bg-slate-50 dark:bg-slate-900/50 rounded-xl border border-slate-200 dark:border-slate-700">
+                            <span class="font-bold text-blue-600 text-sm block mb-1">URL & Address Bar</span>
+                            <p class="text-slate-600 dark:text-slate-300"><strong>URL</strong> adalah alamat unik web (misal: <code>https://www.google.com</code>). <strong>Address bar</strong> adalah tempat mengetikkan URL di bagian atas browser.</p>
+                        </div>
+                        <div class="p-3 bg-slate-50 dark:bg-slate-900/50 rounded-xl border border-slate-200 dark:border-slate-700">
+                            <span class="font-bold text-blue-600 text-sm block mb-1">Bookmark</span>
+                            <p class="text-slate-600 dark:text-slate-300">Fitur penanda untuk menyimpan alamat situs web favorit agar mudah dibuka kembali di kemudian hari.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- INGAT UNTUK UJIAN -->
+                <div class="bg-blue-50 dark:bg-blue-950/40 border-l-4 border-blue-500 p-4 rounded-r-2xl">
+                    <div class="flex items-center space-x-2 text-blue-800 dark:text-blue-300 font-bold text-sm mb-1">
+                        <i class="fa-solid fa-lightbulb"></i>
+                        <span>INGAT UNTUK UJIAN:</span>
+                    </div>
+                    <p class="text-xs text-blue-900 dark:text-blue-200">
+                        Chrome & Firefox = <strong>Browser</strong> | Google & Bing = <strong>Search Engine</strong> | URL = Alamat situs | Bookmark = Menyimpan situs favorit.
+                    </p>
+                </div>
+            </section>
+
+            <!-- BAB 5: KREDIBILITAS DATA & KEAMANAN -->
+            <section id="bab5" class="bg-white dark:bg-slate-800 rounded-3xl p-6 sm:p-8 border border-slate-200 dark:border-slate-700 shadow-sm scroll-mt-20">
+                <div class="flex items-center space-x-3 mb-6">
+                    <div class="w-12 h-12 rounded-2xl bg-rose-100 dark:bg-rose-900/50 text-rose-600 dark:text-rose-400 flex items-center justify-center text-xl font-bold">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <div>
+                        <span class="text-xs font-bold text-rose-600 uppercase tracking-wider">Bab 5</span>
+                        <h2 class="font-heading text-2xl font-bold text-slate-800 dark:text-slate-100">Kredibilitas Data & Keamanan Digital</h2>
+                    </div>
+                </div>
+
+                <div class="space-y-6">
+                    <!-- LANGKAH MEMERIKSA HOAKS -->
+                    <div>
+                        <h4 class="font-bold text-slate-800 dark:text-slate-200 text-sm mb-3">4 Langkah Memeriksa Kebenaran Informasi (Anti-Hoaks):</h4>
+                        <div class="grid grid-cols-1 sm:grid-cols-4 gap-3 text-xs">
+                            <div class="p-3 bg-rose-50 dark:bg-rose-950/30 border border-rose-200 dark:border-rose-800 rounded-xl text-center">
+                                <span class="w-6 h-6 rounded-full bg-rose-600 text-white font-bold inline-flex items-center justify-center mb-2">1</span>
+                                <div class="font-bold text-slate-700 dark:text-slate-200">Periksa Sumber</div>
+                                <span class="text-slate-500">Apakah dari situs resmi? (cth: BMKG)</span>
+                            </div>
+                            <div class="p-3 bg-rose-50 dark:bg-rose-950/30 border border-rose-200 dark:border-rose-800 rounded-xl text-center">
+                                <span class="w-6 h-6 rounded-full bg-rose-600 text-white font-bold inline-flex items-center justify-center mb-2">2</span>
+                                <div class="font-bold text-slate-700 dark:text-slate-200">Periksa Tanggal</div>
+                                <span class="text-slate-500">Apakah berita lama diproduksi ulang?</span>
+                            </div>
+                            <div class="p-3 bg-rose-50 dark:bg-rose-950/30 border border-rose-200 dark:border-rose-800 rounded-xl text-center">
+                                <span class="w-6 h-6 rounded-full bg-rose-600 text-white font-bold inline-flex items-center justify-center mb-2">3</span>
+                                <div class="font-bold text-slate-700 dark:text-slate-200">Bandingkan</div>
+                                <span class="text-slate-500">Cek di media tepercaya lainnya.</span>
+                            </div>
+                            <div class="p-3 bg-rose-50 dark:bg-rose-950/30 border border-rose-200 dark:border-rose-800 rounded-xl text-center">
+                                <span class="w-6 h-6 rounded-full bg-rose-600 text-white font-bold inline-flex items-center justify-center mb-2">4</span>
+                                <div class="font-bold text-slate-700 dark:text-slate-200">Pastikan Bukti</div>
+                                <span class="text-slate-500">Jangan langsung klik 'Share'.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- BEDA DATA VS INFORMASI & APK WARN -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                        <div class="p-4 bg-slate-50 dark:bg-slate-900/50 rounded-2xl border border-slate-200 dark:border-slate-700">
+                            <h5 class="font-bold text-slate-800 dark:text-slate-200 mb-2">Perbedaan Data vs Informasi:</h5>
+                            <ul class="space-y-1 text-slate-600 dark:text-slate-300">
+                                <li>• <strong>Data:</strong> Fakta mentah berupa angka/simbol yang belum diolah (Contoh: nilai 70, 80, 90).</li>
+                                <li>• <strong>Informasi:</strong> Data yang sudah diolah sehingga bermakna (Contoh: nilai rata-rata siswa adalah 80).</li>
+                            </ul>
+                        </div>
+                        <div class="p-4 bg-amber-50 dark:bg-amber-950/30 rounded-2xl border border-amber-200 dark:border-amber-800">
+                            <h5 class="font-bold text-amber-800 dark:text-amber-300 mb-2"><i class="fa-solid fa-triangle-exclamation mr-1"></i> Keamanan File .APK:</h5>
+                            <p class="text-amber-900 dark:text-amber-200">
+                                Jangan sembarangan mengunduh/memasang aplikasi bertipe <strong>.apk</strong> dari tautan atau pesan tak dikenal. File tersebut dapat mengandung <strong>malware</strong> atau pencuri data akun!
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- BAB 6: SISTEM KOMPUTER -->
+            <section id="bab6" class="bg-white dark:bg-slate-800 rounded-3xl p-6 sm:p-8 border border-slate-200 dark:border-slate-700 shadow-sm scroll-mt-20">
+                <div class="flex items-center space-x-3 mb-6">
+                    <div class="w-12 h-12 rounded-2xl bg-amber-100 dark:bg-amber-900/50 text-amber-600 dark:text-amber-400 flex items-center justify-center text-xl font-bold">
+                        <i class="fa-solid fa-desktop"></i>
+                    </div>
+                    <div>
+                        <span class="text-xs font-bold text-amber-600 uppercase tracking-wider">Bab 6</span>
+                        <h2 class="font-heading text-2xl font-bold text-slate-800 dark:text-slate-100">Sistem Komputer</h2>
+                    </div>
+                </div>
+
+                <p class="text-slate-600 dark:text-slate-300 leading-relaxed mb-6">
+                    Sistem komputer adalah gabungan 3 komponen utama yang saling bekerja sama: <strong>Hardware</strong> (Perangkat Keras), <strong>Software</strong> (Perangkat Lunak), dan <strong>Brainware</strong> (Pengguna/Manusia).
+                </p>
+
+                <!-- KOMPONEN HARDWARE -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6 text-xs">
+                    <div class="p-4 bg-slate-50 dark:bg-slate-900/50 rounded-2xl border border-slate-200 dark:border-slate-700">
+                        <span class="font-bold text-amber-600 text-sm block mb-1"><i class="fa-solid fa-keyboard mr-1"></i> Input Device</span>
+                        <p class="text-slate-500 mb-2">Memasukkan data ke komputer.</p>
+                        <span class="font-semibold text-slate-700 dark:text-slate-300">Contoh: Keyboard, Mouse, Scanner, Mikrofon, Webcam.</span>
+                    </div>
+
+                    <div class="p-4 bg-slate-50 dark:bg-slate-900/50 rounded-2xl border border-slate-200 dark:border-slate-700">
+                        <span class="font-bold text-amber-600 text-sm block mb-1"><i class="fa-solid fa-microchip mr-1"></i> Process Device</span>
+                        <p class="text-slate-500 mb-2">Mengolah data instruksi.</p>
+                        <span class="font-semibold text-slate-700 dark:text-slate-300">CPU & ALU (Arithmetic Logic Unit) untuk hitungan & logika.</span>
+                    </div>
+
+                    <div class="p-4 bg-slate-50 dark:bg-slate-900/50 rounded-2xl border border-slate-200 dark:border-slate-700">
+                        <span class="font-bold text-amber-600 text-sm block mb-1"><i class="fa-solid fa-print mr-1"></i> Output Device</span>
+                        <p class="text-slate-500 mb-2">Menampilkan hasil olahan data.</p>
+                        <span class="font-semibold text-slate-700 dark:text-slate-300">Contoh: Monitor, Printer, Speaker, Proyektor.</span>
+                    </div>
+
+                    <div class="p-4 bg-slate-50 dark:bg-slate-900/50 rounded-2xl border border-slate-200 dark:border-slate-700">
+                        <span class="font-bold text-amber-600 text-sm block mb-1"><i class="fa-solid fa-hard-drive mr-1"></i> Storage Device</span>
+                        <p class="text-slate-500 mb-2">Menyimpan data file.</p>
+                        <span class="font-semibold text-slate-700 dark:text-slate-300">RAM (Sementara), SSD/Harddisk, Flashdisk (Eksternal).</span>
+                    </div>
+                </div>
+
+                <!-- INGAT UNTUK UJIAN -->
+                <div class="bg-amber-50 dark:bg-amber-950/40 border-l-4 border-amber-500 p-4 rounded-r-2xl">
+                    <div class="flex items-center space-x-2 text-amber-800 dark:text-amber-300 font-bold text-sm mb-1">
+                        <i class="fa-solid fa-lightbulb"></i>
+                        <span>INGAT UNTUK UJIAN:</span>
+                    </div>
+                    <p class="text-xs text-amber-900 dark:text-amber-200">
+                        RAM menyimpan data <strong>sementara</strong> saat program berjalan | CPU memproses data | ALU mengurus logika & aritmatika | Brainware = manusia pengoperasi komputer.
+                    </p>
+                </div>
+            </section>
+
+            <!-- BAB 7: RUANG PUBLIK -->
+            <section id="bab7" class="bg-white dark:bg-slate-800 rounded-3xl p-6 sm:p-8 border border-slate-200 dark:border-slate-700 shadow-sm scroll-mt-20">
+                <div class="flex items-center space-x-3 mb-6">
+                    <div class="w-12 h-12 rounded-2xl bg-teal-100 dark:bg-teal-900/50 text-teal-600 dark:text-teal-400 flex items-center justify-center text-xl font-bold">
+                        <i class="fa-solid fa-users"></i>
+                    </div>
+                    <div>
+                        <span class="text-xs font-bold text-teal-600 uppercase tracking-wider">Bab 7</span>
+                        <h2 class="font-heading text-2xl font-bold text-slate-800 dark:text-slate-100">Ruang Publik & Etika Digital</h2>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <div class="p-4 bg-teal-50 dark:bg-teal-950/30 rounded-2xl border border-teal-200 dark:border-teal-800 text-xs">
+                        <h4 class="font-bold text-teal-700 dark:text-teal-300 text-sm mb-2">1. Ruang Publik Nyata (Fisik)</h4>
+                        <p class="text-slate-600 dark:text-slate-300 mb-2">Tempat interaksi langsung secara fisik.</p>
+                        <span class="font-semibold text-teal-800 dark:text-teal-200">Contoh: Taman kota, perpustakaan, lapangan, alun-alun, pasar.</span>
+                    </div>
+
+                    <div class="p-4 bg-cyan-50 dark:bg-cyan-950/30 rounded-2xl border border-cyan-200 dark:border-cyan-800 text-xs">
+                        <h4 class="font-bold text-cyan-700 dark:text-cyan-300 text-sm mb-2">2. Ruang Publik Virtual (Digital)</h4>
+                        <p class="text-slate-600 dark:text-slate-300 mb-2">Tempat interaksi lewat jaringan internet.</p>
+                        <span class="font-semibold text-cyan-800 dark:text-cyan-200">Contoh: Grup WhatsApp, forum daring, kolom komentar, media sosial.</span>
+                    </div>
+                </div>
+
+                <!-- ETIKA DIGITAL -->
+                <div class="bg-slate-50 dark:bg-slate-900/50 p-4 rounded-2xl border border-slate-200 dark:border-slate-700 text-xs space-y-2">
+                    <h5 class="font-bold text-slate-800 dark:text-slate-200">Etika Utama Komunikasi Digital:</h5>
+                    <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-slate-600 dark:text-slate-300">
+                        <li>• Gunakan bahasa yang sopan & tidak merendahkan.</li>
+                        <li>• Hati-hati menjaga data pribadi diri & orang lain.</li>
+                        <li>• Tidak melakukan perundungan (cyberbullying).</li>
+                        <li>• Menghormati perbedaan pendapat sesama anggota.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- BAB 8: TIK & JARINGAN -->
+            <section id="bab8" class="bg-white dark:bg-slate-800 rounded-3xl p-6 sm:p-8 border border-slate-200 dark:border-slate-700 shadow-sm scroll-mt-20">
+                <div class="flex items-center space-x-3 mb-6">
+                    <div class="w-12 h-12 rounded-2xl bg-indigo-100 dark:bg-indigo-900/50 text-indigo-600 dark:text-indigo-400 flex items-center justify-center text-xl font-bold">
+                        <i class="fa-solid fa-network-wired"></i>
+                    </div>
+                    <div>
+                        <span class="text-xs font-bold text-indigo-600 uppercase tracking-wider">Bab 8</span>
+                        <h2 class="font-heading text-2xl font-bold text-slate-800 dark:text-slate-100">Teknologi Informasi & Jaringan LAN</h2>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6 text-xs">
+                    <div class="p-4 bg-slate-50 dark:bg-slate-900/50 rounded-2xl border border-slate-200 dark:border-slate-700 space-y-2">
+                        <h4 class="font-bold text-indigo-600 text-sm">Folder & Subfolder</h4>
+                        <p class="text-slate-600 dark:text-slate-300"><strong>Folder</strong> adalah wadah tempat menyimpan & mengelompokkan file. <strong>Subfolder</strong> adalah folder yang berada di dalam folder lain.</p>
+                        <div class="p-2 bg-white dark:bg-slate-800 rounded-lg font-mono border border-slate-200 dark:border-slate-700 text-[11px]">
+                            📁 INFORMATIKA (Folder Utama)<br>
+                            &nbsp;&nbsp;└── 📁 BAB 1 (Subfolder)<br>
+                            &nbsp;&nbsp;└── 📁 TUGAS (Subfolder)
+                        </div>
+                    </div>
+
+                    <div class="p-4 bg-slate-50 dark:bg-slate-900/50 rounded-2xl border border-slate-200 dark:border-slate-700 space-y-2">
+                        <h4 class="font-bold text-indigo-600 text-sm">LAN (Local Area Network)</h4>
+                        <p class="text-slate-600 dark:text-slate-300">Jaringan komputer yang menghubungkan perangkat dalam wilayah lokal/terbatas (seperti laboratorium komputer sekolah, kantor, atau rumah) untuk saling bertukar data atau berbagi printer.</p>
+                        <div class="p-2 bg-white dark:bg-slate-800 rounded-lg text-center border border-slate-200 dark:border-slate-700">
+                            <i class="fa-solid fa-desktop text-indigo-500 mx-1"></i>
+                            <i class="fa-solid fa-arrows-left-right text-slate-400 mx-1"></i>
+                            <i class="fa-solid fa-server text-indigo-500 mx-1"></i>
+                            <i class="fa-solid fa-arrows-left-right text-slate-400 mx-1"></i>
+                            <i class="fa-solid fa-print text-indigo-500 mx-1"></i>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SIMULATOR NUMERASI INTERAKTIF -->
+            <section id="kalkulator" class="bg-gradient-to-br from-slate-900 to-tech-950 text-white rounded-3xl p-6 sm:p-8 shadow-xl">
+                <div class="flex items-center space-x-3 mb-6">
+                    <div class="p-3 bg-brand-500/20 text-brand-400 rounded-2xl">
+                        <i class="fa-solid fa-calculator text-2xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-heading text-xl font-bold">Simulator & Kalkulator Numerasi Informatika</h3>
+                        <p class="text-xs text-slate-400">Cobalah perhitungan numerasi sederhana sesuai contoh soal ujian!</p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- NUMERASI 1: KAPASITAS REKAMAN CCTV -->
+                    <div class="bg-slate-800/80 p-5 rounded-2xl border border-slate-700 space-y-3">
+                        <h4 class="font-bold text-xs text-tech-400 uppercase tracking-wider">1. Hitung Penyimpanan CCTV</h4>
+                        <div class="space-y-2 text-xs">
+                            <div>
+                                <label class="block text-slate-400 mb-1">Jumlah Kamera:</label>
+                                <input type="number" id="cctvCam" value="4" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-1.5 text-white">
+                            </div>
+                            <div>
+                                <label class="block text-slate-400 mb-1">Ukuran Rekaman (GB/jam):</label>
+                                <input type="number" id="cctvGb" value="1.5" step="0.1" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-1.5 text-white">
+                            </div>
+                            <div>
+                                <label class="block text-slate-400 mb-1">Durasi (Jam):</label>
+                                <input type="number" id="cctvHours" value="6" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-1.5 text-white">
+                            </div>
+                        </div>
+                        <div class="pt-2 border-t border-slate-700 flex justify-between items-center">
+                            <span class="text-xs text-slate-400">Kapasitas Butuh:</span>
+                            <span id="cctvResult" class="font-mono text-base font-bold text-brand-400">36 GB</span>
+                        </div>
+                    </div>
+
+                    <!-- NUMERASI 2: PERSENTASE SOPAN DI RUANG VIRTUAL -->
+                    <div class="bg-slate-800/80 p-5 rounded-2xl border border-slate-700 space-y-3">
+                        <h4 class="font-bold text-xs text-tech-400 uppercase tracking-wider">2. Persentase Anggota Sopan</h4>
+                        <div class="space-y-2 text-xs">
+                            <div>
+                                <label class="block text-slate-400 mb-1">Total Anggota Grup:</label>
+                                <input type="number" id="totalMembers" value="40" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-1.5 text-white">
+                            </div>
+                            <div>
+                                <label class="block text-slate-400 mb-1">Anggota Berkomunikasi Sopan:</label>
+                                <input type="number" id="politeMembers" value="32" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-1.5 text-white">
+                            </div>
+                        </div>
+                        <div class="pt-6 border-t border-slate-700 flex justify-between items-center">
+                            <span class="text-xs text-slate-400">Persentase:</span>
+                            <span id="percentResult" class="font-mono text-base font-bold text-amber-400">80%</span>
+                        </div>
+                    </div>
+
+                    <!-- NUMERASI 3: PEMOTONGAN KAYU (DEKOMPOSISI) -->
+                    <div class="bg-slate-800/80 p-5 rounded-2xl border border-slate-700 space-y-3">
+                        <h4 class="font-bold text-xs text-tech-400 uppercase tracking-wider">3. Pemotongan Balok Kayu</h4>
+                        <div class="space-y-2 text-xs">
+                            <div>
+                                <label class="block text-slate-400 mb-1">Panjang Awal (cm):</label>
+                                <input type="number" id="woodTotal" value="100" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-1.5 text-white">
+                            </div>
+                            <div>
+                                <label class="block text-slate-400 mb-1">Potongan (isi misal: 40,30,30):</label>
+                                <input type="text" id="woodCuts" value="40,30,30" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-1.5 text-white">
+                            </div>
+                        </div>
+                        <div class="pt-2 border-t border-slate-700 flex justify-between items-center">
+                            <span class="text-xs text-slate-400">Sisa Kayu:</span>
+                            <span id="woodResult" class="font-mono text-base font-bold text-purple-400">0 cm</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- RANGKUMAN CEPAT MENJELANG AAS -->
+            <section id="rangkuman" class="bg-white dark:bg-slate-800 rounded-3xl p-6 sm:p-8 border border-slate-200 dark:border-slate-700 shadow-sm scroll-mt-20">
+                <div class="flex items-center space-x-3 mb-6">
+                    <div class="w-12 h-12 rounded-2xl bg-yellow-100 dark:bg-yellow-900/50 text-yellow-600 dark:text-yellow-400 flex items-center justify-center text-xl font-bold">
+                        <i class="fa-solid fa-bolt"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-heading text-xl font-bold text-slate-800 dark:text-slate-100">Rangkuman Cepat Menjelang Ujian AAS</h3>
+                        <p class="text-xs text-slate-500">Gunakan tabel ringkas ini untuk mengulang materi dalam waktu singkat!</p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 text-xs">
+                    <div class="p-3 bg-slate-50 dark:bg-slate-900/50 rounded-xl border border-slate-200 dark:border-slate-700">
+                        <span class="font-bold text-tech-600 block">List</span>
+                        <span class="text-slate-500">Daftar data berurutan.</span>
+                    </div>
+                    <div class="p-3 bg-slate-50 dark:bg-slate-900/50 rounded-xl border border-slate-200 dark:border-slate-700">
+                        <span class="font-bold text-tech-600 block">Queue</span>
+                        <span class="text-slate-500">Antrean berprinsip FIFO.</span>
+                    </div>
+                    <div class="p-3 bg-slate-50 dark:bg-slate-900/50 rounded-xl border border-slate-200 dark:border-slate-700">
+                        <span class="font-bold text-tech-600 block">Tree</span>
+                        <span class="text-slate-500">Struktur hierarki (Root, Leaf).</span>
+                    </div>
+                    <div class="p-3 bg-slate-50 dark:bg-slate-900/50 rounded-xl border border-slate-200 dark:border-slate-700">
+                        <span class="font-bold text-tech-600 block">SUM / AVERAGE</span>
+                        <span class="text-slate-500">Jumlah angka / Rata-rata.</span>
+                    </div>
+                    <div class="p-3 bg-slate-50 dark:bg-slate-900/50 rounded-xl border border-slate-200 dark:border-slate-700">
+                        <span class="font-bold text-tech-600 block">Dekomposisi</span>
+                        <span class="text-slate-500">Memecah masalah besar.</span>
+                    </div>
+                    <div class="p-3 bg-slate-50 dark:bg-slate-900/50 rounded-xl border border-slate-200 dark:border-slate-700">
+                        <span class="font-bold text-tech-600 block">Algoritma</span>
+                        <span class="text-slate-500">Langkah penyelesaian logis.</span>
+                    </div>
+                    <div class="p-3 bg-slate-50 dark:bg-slate-900/50 rounded-xl border border-slate-200 dark:border-slate-700">
+                        <span class="font-bold text-tech-600 block">Browser</span>
+                        <span class="text-slate-500">Aplikasi peramban web.</span>
+                    </div>
+                    <div class="p-3 bg-slate-50 dark:bg-slate-900/50 rounded-xl border border-slate-200 dark:border-slate-700">
+                        <span class="font-bold text-tech-600 block">Search Engine</span>
+                        <span class="text-slate-500">Mesin pencari informasi.</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- LATIHAN SOAL INTERAKTIF -->
+            <section id="latihan" class="bg-white dark:bg-slate-800 rounded-3xl p-6 sm:p-8 border border-slate-200 dark:border-slate-700 shadow-sm scroll-mt-20">
+                <div class="flex items-center justify-between mb-6">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-12 h-12 rounded-2xl bg-brand-100 dark:bg-brand-900/50 text-brand-600 dark:text-brand-400 flex items-center justify-center text-xl font-bold">
+                            <i class="fa-solid fa-pen-to-square"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-heading text-xl font-bold text-slate-800 dark:text-slate-100">Latihan Mandiri Interaktif</h3>
+                            <p class="text-xs text-slate-500">Uji pemahamanmu sebelum menghadapi Asesmen Sumatif!</p>
+                        </div>
+                    </div>
+                    <span id="quizScoreBadge" class="hidden px-3 py-1 bg-brand-100 dark:bg-brand-900 text-brand-700 dark:text-brand-300 rounded-full font-bold text-xs">
+                        Skor: <span id="quizScore">0</span> / 5
+                    </span>
+                </div>
+
+                <form id="quizForm" class="space-y-6">
+                    <!-- SOAL 1 -->
+                    <div class="p-4 bg-slate-50 dark:bg-slate-900/40 rounded-2xl border border-slate-200 dark:border-slate-700 space-y-3">
+                        <div class="font-semibold text-sm text-slate-800 dark:text-slate-200">
+                            1. Antrean kasir di supermarket melayani pembeli yang datang lebih dulu. Struktur data yang menerapkan prinsip First In, First Out (FIFO) ini dinamakan...
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs">
+                            <label class="p-3 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 flex items-center space-x-2 cursor-pointer hover:border-brand-500">
+                                <input type="radio" name="q1" value="A" class="text-brand-600">
+                                <span>A. List</span>
+                            </label>
+                            <label class="p-3 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 flex items-center space-x-2 cursor-pointer hover:border-brand-500">
+                                <input type="radio" name="q1" value="B" class="text-brand-600">
+                                <span>B. Queue</span>
+                            </label>
+                            <label class="p-3 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 flex items-center space-x-2 cursor-pointer hover:border-brand-500">
+                                <input type="radio" name="q1" value="C" class="text-brand-600">
+                                <span>C. Tree</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- SOAL 2 -->
+                    <div class="p-4 bg-slate-50 dark:bg-slate-900/40 rounded-2xl border border-slate-200 dark:border-slate-700 space-y-3">
+                        <div class="font-semibold text-sm text-slate-800 dark:text-slate-200">
+                            2. Rumus Microsoft Excel yang digunakan untuk menghitung nilai rata-rata dari sekelompok sel adalah...
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs">
+                            <label class="p-3 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 flex items-center space-x-2 cursor-pointer hover:border-brand-500">
+                                <input type="radio" name="q2" value="A" class="text-brand-600">
+                                <span>A. =SUM()</span>
+                            </label>
+                            <label class="p-3 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 flex items-center space-x-2 cursor-pointer hover:border-brand-500">
+                                <input type="radio" name="q2" value="B" class="text-brand-600">
+                                <span>B. =COUNT()</span>
+                            </label>
+                            <label class="p-3 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 flex items-center space-x-2 cursor-pointer hover:border-brand-500">
+                                <input type="radio" name="q2" value="C" class="text-brand-600">
+                                <span>C. =AVERAGE()</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- SOAL 3 -->
+                    <div class="p-4 bg-slate-50 dark:bg-slate-900/40 rounded-2xl border border-slate-200 dark:border-slate-700 space-y-3">
+                        <div class="font-semibold text-sm text-slate-800 dark:text-slate-200">
+                            3. Memecah tugas besar membersihkan kelas menjadi menyapu, mengepel, dan merapikan meja merupakan contoh fondasi berpikir komputasional yaitu...
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs">
+                            <label class="p-3 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 flex items-center space-x-2 cursor-pointer hover:border-brand-500">
+                                <input type="radio" name="q3" value="A" class="text-brand-600">
+                                <span>A. Dekomposisi</span>
+                            </label>
+                            <label class="p-3 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 flex items-center space-x-2 cursor-pointer hover:border-brand-500">
+                                <input type="radio" name="q3" value="B" class="text-brand-600">
+                                <span>B. Abstraksi</span>
+                            </label>
+                            <label class="p-3 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 flex items-center space-x-2 cursor-pointer hover:border-brand-500">
+                                <input type="radio" name="q3" value="C" class="text-brand-600">
+                                <span>C. Pengenalan Pola</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- SOAL 4 -->
+                    <div class="p-4 bg-slate-50 dark:bg-slate-900/40 rounded-2xl border border-slate-200 dark:border-slate-700 space-y-3">
+                        <div class="font-semibold text-sm text-slate-800 dark:text-slate-200">
+                            4. Google Chrome dan Mozilla Firefox termasuk ke dalam kategori...
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs">
+                            <label class="p-3 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 flex items-center space-x-2 cursor-pointer hover:border-brand-500">
+                                <input type="radio" name="q4" value="A" class="text-brand-600">
+                                <span>A. Search Engine</span>
+                            </label>
+                            <label class="p-3 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 flex items-center space-x-2 cursor-pointer hover:border-brand-500">
+                                <input type="radio" name="q4" value="B" class="text-brand-600">
+                                <span>B. Browser</span>
+                            </label>
+                            <label class="p-3 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 flex items-center space-x-2 cursor-pointer hover:border-brand-500">
+                                <input type="radio" name="q4" value="C" class="text-brand-600">
+                                <span>C. URL</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- SOAL 5 -->
+                    <div class="p-4 bg-slate-50 dark:bg-slate-900/40 rounded-2xl border border-slate-200 dark:border-slate-700 space-y-3">
+                        <div class="font-semibold text-sm text-slate-800 dark:text-slate-200">
+                            5. Komponen perangkat keras komputer yang berfungsi menyimpan data secara sementara saat program dijalankan adalah...
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs">
+                            <label class="p-3 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 flex items-center space-x-2 cursor-pointer hover:border-brand-500">
+                                <input type="radio" name="q5" value="A" class="text-brand-600">
+                                <span>A. Harddisk</span>
+                            </label>
+                            <label class="p-3 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 flex items-center space-x-2 cursor-pointer hover:border-brand-500">
+                                <input type="radio" name="q5" value="B" class="text-brand-600">
+                                <span>B. RAM</span>
+                            </label>
+                            <label class="p-3 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 flex items-center space-x-2 cursor-pointer hover:border-brand-500">
+                                <input type="radio" name="q5" value="C" class="text-brand-600">
+                                <span>C. CPU</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <button type="button" id="submitQuiz" class="w-full sm:w-auto bg-brand-600 hover:bg-brand-700 text-white font-bold text-sm px-8 py-3 rounded-xl shadow-md transition-all">
+                        Periksa Jawaban Kuis
+                    </button>
+                </form>
+
+                <div id="quizFeedback" class="hidden mt-4 p-4 rounded-2xl text-sm"></div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="bg-white dark:bg-slate-800 border-t border-slate-200 dark:border-slate-700 py-6 mt-12">
+        <div class="max-w-7xl mx-auto px-4 text-center text-xs text-slate-500 dark:text-slate-400 space-y-2">
+            <p>© 2026 / 2027 Modul Pembelajaran Informatika Kelas VII • Disusun Berdasarkan Kisi-Kisi AAS • Pengembang : Guru Informatika SMP Negeri 2 Bangunrejo</p>
+            <p>Selamat belajar dan sukses selalu untuk Asesmen Sumatif Akhir Semester!</p>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT FOR INTERACTIVITY -->
+    <script>
+        // DARK MODE TOGGLE
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        darkModeToggle.addEventListener('click', () => {
+            document.documentElement.classList.toggle('dark');
+        });
+
+        // SIDEBAR TOGGLE MOBILE
+        const toggleSidebar = document.getElementById('toggleSidebar');
+        const closeSidebar = document.getElementById('closeSidebar');
+        const sidebar = document.getElementById('sidebar');
+
+        toggleSidebar.addEventListener('click', () => {
+            sidebar.classList.remove('-translate-x-full');
+        });
+
+        closeSidebar.addEventListener('click', () => {
+            sidebar.classList.add('-translate-x-full');
+        });
+
+        // CLOSE SIDEBAR ON NAV LINK CLICK (MOBILE)
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.addEventListener('click', () => {
+                if (window.innerWidth < 1024) {
+                    sidebar.classList.add('-translate-x-full');
+                }
+            });
+        });
+
+        // SEARCH MODAL LOGIC
+        const searchBtn = document.getElementById('searchBtn');
+        const searchModal = document.getElementById('searchModal');
+        const closeSearch = document.getElementById('closeSearch');
+        const searchInput = document.getElementById('searchInput');
+        const searchResults = document.getElementById('searchResults');
+
+        const topics = [
+            { title: "Struktur Data (List, Queue, Tree)", hash: "#bab1", desc: "FIFO, Root, Parent, Child, Leaf" },
+            { title: "Microsoft Excel & Rumus", hash: "#bab2", desc: "SUM, AVERAGE, COUNT, AND, Cell A1" },
+            { title: "Berpikir Komputasional", hash: "#bab3", desc: "Dekomposisi, Pengenalan Pola, Abstraksi, Algoritma" },
+            { title: "Browser & Search Engine", hash: "#bab4", desc: "Chrome, Google, URL, Address Bar, Bookmark" },
+            { title: "Kredibilitas Data & Hoaks", hash: "#bab5", desc: "Verifikasi informasi, BMKG, Keamanan file APK" },
+            { title: "Sistem Komputer", hash: "#bab6", desc: "Hardware, Software, Brainware, RAM, CPU, ALU" },
+            { title: "Ruang Publik & Etika", hash: "#bab7", desc: "Taman vs WhatsApp, Etika berkomunikasi digital" },
+            { title: "TIK & Jaringan LAN", hash: "#bab8", desc: "Folder, Subfolder, Local Area Network" }
+        ];
+
+        searchBtn.addEventListener('click', () => {
+            searchModal.classList.remove('hidden');
+            searchInput.focus();
+        });
+
+        closeSearch.addEventListener('click', () => {
+            searchModal.classList.add('hidden');
+        });
+
+        searchInput.addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase().trim();
+            if (!query) {
+                searchResults.innerHTML = `<p class="text-slate-400 text-center py-6">Ketik kata kunci untuk mulai mencari materi...</p>`;
+                return;
+            }
+
+            const filtered = topics.filter(t => t.title.toLowerCase().includes(query) || t.desc.toLowerCase().includes(query));
+            if (filtered.length === 0) {
+                searchResults.innerHTML = `<p class="text-slate-400 text-center py-6">Materi tidak ditemukan.</p>`;
+            } else {
+                searchResults.innerHTML = filtered.map(t => `
+                    <a href="${t.hash}" onclick="searchModal.classList.add('hidden')" class="block p-3 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-700/50 transition-colors">
+                        <div class="font-bold text-slate-800 dark:text-slate-100">${t.title}</div>
+                        <div class="text-xs text-slate-500">${t.desc}</div>
+                    </a>
+                `).join('');
+            }
+        });
+
+        // SIMULATOR NUMERASI LOGIC
+        // 1. CCTV
+        const cctvCam = document.getElementById('cctvCam');
+        const cctvGb = document.getElementById('cctvGb');
+        const cctvHours = document.getElementById('cctvHours');
+        const cctvResult = document.getElementById('cctvResult');
+
+        function calcCCTV() {
+            const res = (parseFloat(cctvCam.value) || 0) * (parseFloat(cctvGb.value) || 0) * (parseFloat(cctvHours.value) || 0);
+            cctvResult.innerText = res + ' GB';
+        }
+        [cctvCam, cctvGb, cctvHours].forEach(el => el.addEventListener('input', calcCCTV));
+
+        // 2. Persentase
+        const totalMembers = document.getElementById('totalMembers');
+        const politeMembers = document.getElementById('politeMembers');
+        const percentResult = document.getElementById('percentResult');
+
+        function calcPercent() {
+            const tot = parseFloat(totalMembers.value) || 1;
+            const pol = parseFloat(politeMembers.value) || 0;
+            const res = Math.round((pol / tot) * 100);
+            percentResult.innerText = res + '%';
+        }
+        [totalMembers, politeMembers].forEach(el => el.addEventListener('input', calcPercent));
+
+        // 3. Potongan Kayu
+        const woodTotal = document.getElementById('woodTotal');
+        const woodCuts = document.getElementById('woodCuts');
+        const woodResult = document.getElementById('woodResult');
+
+        function calcWood() {
+            const tot = parseFloat(woodTotal.value) || 0;
+            const cuts = woodCuts.value.split(',').reduce((sum, val) => sum + (parseFloat(val) || 0), 0);
+            const rem = tot - cuts;
+            woodResult.innerText = rem + ' cm';
+        }
+        [woodTotal, woodCuts].forEach(el => el.addEventListener('input', calcWood));
+
+        // KUIS INTERAKTIF LOGIC
+        const submitQuiz = document.getElementById('submitQuiz');
+        const quizForm = document.getElementById('quizForm');
+        const quizFeedback = document.getElementById('quizFeedback');
+        const quizScoreBadge = document.getElementById('quizScoreBadge');
+        const quizScore = document.getElementById('quizScore');
+
+        const answers = { q1: 'B', q2: 'C', q3: 'A', q4: 'B', q5: 'B' };
+
+        submitQuiz.addEventListener('click', () => {
+            let score = 0;
+            const formData = new FormData(quizForm);
+
+            for (let [q, ans] of Object.entries(answers)) {
+                if (formData.get(q) === ans) {
+                    score++;
+                }
+            }
+
+            quizScore.innerText = score;
+            quizScoreBadge.classList.remove('hidden');
+
+            quizFeedback.classList.remove('hidden', 'bg-green-100', 'bg-amber-100', 'text-green-800', 'text-amber-800');
+            if (score === 5) {
+                quizFeedback.classList.add('bg-green-100', 'dark:bg-green-950/50', 'text-green-800', 'dark:text-green-200');
+                quizFeedback.innerHTML = `<strong>Sempurna! Skor 5/5 🎉</strong><br>Kamu sudah sangat siap menghadapi Asesmen Sumatif Akhir Semester Informatika!`;
+            } else {
+                quizFeedback.classList.add('bg-amber-100', 'dark:bg-amber-950/50', 'text-amber-800', 'dark:text-amber-200');
+                quizFeedback.innerHTML = `<strong>Skor kamu: ${score}/5</strong><br>Bagus! Pelajari kembali poin "Ingat Untuk Ujian" di atas untuk menyempurnakan pemahamanmu.`;
+            }
+        });
+    </script>
+</body>
+</html>
